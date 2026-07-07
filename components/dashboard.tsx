@@ -17,11 +17,11 @@ export function Dashboard({
   const [todos, setTodos] = useState<TodoDTO[]>(initialTodos);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-5">
       <QuickCapture
         onTodoCreated={(todo) => setTodos((prev) => [...prev, todo])}
       />
-      <div className="grid gap-4 md:grid-cols-2 md:items-start">
+      <div className="grid gap-5 md:grid-cols-2 md:items-start">
         <PinnedNotesPanel notes={pinnedNotes} />
         <TodoWidget todos={todos} setTodos={setTodos} />
       </div>

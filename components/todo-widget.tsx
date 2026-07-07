@@ -14,7 +14,6 @@ import {
   startOfTodayMs,
   toMs,
 } from "@/lib/dates";
-import { cn } from "@/lib/utils";
 import type { TodoDTO } from "@/lib/types";
 
 function sortIncomplete(a: TodoDTO, b: TodoDTO): number {
@@ -105,15 +104,15 @@ export function TodoWidget({
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-base">
-          <ListTodo className="size-4 text-primary" />
+        <CardTitle className="u-label flex items-center gap-2 font-normal text-muted-foreground">
+          <ListTodo className="size-3.5 text-primary" />
           Todos
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
         {incomplete.length === 0 && completedToday.length === 0 ? (
-          <p className="py-4 text-center text-sm text-muted-foreground">
-            No todos yet. Add one below.
+          <p className="py-4 text-center text-sm lowercase text-muted-foreground">
+            no todos yet. add one below.
           </p>
         ) : (
           <ul className="space-y-1">
@@ -156,7 +155,7 @@ export function TodoWidget({
           <Input
             value={newText}
             onChange={(e) => setNewText(e.target.value)}
-            placeholder="Add a todo…"
+            placeholder="add a todo…"
             aria-label="Add a todo"
             enterKeyHint="done"
           />
@@ -202,10 +201,7 @@ function TodoRow({
         />
         <span className="min-w-0 flex-1 text-sm">{todo.text}</span>
         {todo.dueDate && (
-          <Badge
-            variant={overdue ? "destructive" : "secondary"}
-            className={cn(!overdue && todo.dueDate && "text-muted-foreground")}
-          >
+          <Badge variant={overdue ? "destructive" : "secondary"}>
             <CalendarIcon className="size-3" />
             {formatDueDate(todo.dueDate)}
           </Badge>

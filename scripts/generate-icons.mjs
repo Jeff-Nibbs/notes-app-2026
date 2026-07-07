@@ -76,7 +76,7 @@ function drawIcon(size, { fullBleed = false } = {}) {
   const bgHalf = fullBleed ? size / 2 + 2 : size * 0.46;
   const bgRadius = fullBleed ? 0 : size * 0.21;
 
-  // White "note lines" glyph: three capsules of decreasing width.
+  // Molten-brass "note lines" glyph: three capsules of decreasing width.
   const glyphScale = fullBleed ? 0.72 : 0.94;
   const bars = [
     { w: 0.46, y: -0.17 },
@@ -95,11 +95,11 @@ function drawIcon(size, { fullBleed = false } = {}) {
       const bg = coverage(
         roundedRectDist(x + 0.5, y + 0.5, cx, cy, bgHalf, bgHalf, bgRadius)
       );
-      // Indigo vertical gradient.
+      // Night Foundry vertical gradient: dark violet studio, top-lit.
       const t = y / size;
-      let r = lerp(0x63, 0x43, t);
-      let g = lerp(0x66, 0x38, t);
-      let b = lerp(0xf1, 0xca, t);
+      let r = lerp(0x24, 0x12, t);
+      let g = lerp(0x20, 0x10, t);
+      let b = lerp(0x30, 0x18, t);
       let a = bg;
 
       let glyph = 0;
@@ -112,9 +112,9 @@ function drawIcon(size, { fullBleed = false } = {}) {
         );
       }
       glyph *= bg;
-      r = lerp(r, 255, glyph);
-      g = lerp(g, 255, glyph);
-      b = lerp(b, 255, glyph);
+      r = lerp(r, 0xe3, glyph);
+      g = lerp(g, 0x8b, glyph);
+      b = lerp(b, 0x42, glyph);
 
       const i = (y * size + x) * 4;
       rgba[i] = Math.round(r);

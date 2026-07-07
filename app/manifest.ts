@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Personal dashboard notes app",
     start_url: "/",
     display: "standalone",
-    background_color: "#fafaf9",
-    theme_color: "#4f46e5",
+    background_color: "#131119",
+    theme_color: "#131119",
     icons: [
       {
         src: "/icons/icon-192.png",

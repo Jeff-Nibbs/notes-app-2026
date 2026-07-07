@@ -128,11 +128,11 @@ export function NoteEditor({ note }: { note: NoteDTO | null }) {
           <span
             aria-live="polite"
             className={cn(
-              "flex items-center gap-1 text-sm font-medium text-primary transition-opacity duration-300",
+              "u-label flex items-center gap-1.5 text-primary transition-opacity duration-300",
               saved ? "opacity-100" : "opacity-0"
             )}
           >
-            <CheckIcon className="size-4" />
+            <CheckIcon className="size-3.5" />
             Saved
           </span>
           <Button
@@ -165,22 +165,22 @@ export function NoteEditor({ note }: { note: NoteDTO | null }) {
         </div>
       </div>
 
-      {error && <p className="text-sm text-destructive">{error}</p>}
+      {error && <p className="text-sm lowercase text-destructive">{error}</p>}
 
       <Input
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title (optional)"
+        placeholder="title (optional)"
         aria-label="Note title"
-        className="border-none bg-transparent px-1 text-lg font-semibold shadow-none focus-visible:ring-0"
+        className="font-display h-auto border-none bg-transparent px-1 text-3xl leading-tight focus-visible:ring-0"
       />
 
       <Textarea
         value={body}
         onChange={(e) => setBody(e.target.value)}
-        placeholder="Write your note…"
+        placeholder="write your note…"
         aria-label="Note body"
-        className="min-h-[50vh] resize-y border-none bg-transparent px-1 shadow-none focus-visible:ring-0"
+        className="min-h-[50vh] resize-y border-none bg-transparent px-1 leading-7 focus-visible:ring-0"
       />
 
       <div className="space-y-2 border-t pt-3">
@@ -216,9 +216,9 @@ export function NoteEditor({ note }: { note: NoteDTO | null }) {
               }
             }}
             onBlur={addTagFromInput}
-            placeholder={tags.length === 0 ? "Add tags…" : "Add tag"}
+            placeholder={tags.length === 0 ? "add tags…" : "add tag"}
             aria-label="Add tag"
-            className="h-8 w-28 flex-1 border-none bg-transparent px-1 text-sm shadow-none focus-visible:ring-0"
+            className="h-8 w-28 flex-1 border-none bg-transparent px-1 text-sm focus-visible:ring-0"
           />
         </div>
       </div>
@@ -227,7 +227,9 @@ export function NoteEditor({ note }: { note: NoteDTO | null }) {
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Delete this note?</DialogTitle>
-            <DialogDescription>This cannot be undone.</DialogDescription>
+            <DialogDescription className="lowercase">
+              this cannot be undone.
+            </DialogDescription>
           </DialogHeader>
           <DialogFooter>
             <Button

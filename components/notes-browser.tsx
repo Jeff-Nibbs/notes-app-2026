@@ -63,9 +63,9 @@ export function NotesBrowser({ initialNotes }: { initialNotes: NoteDTO[] }) {
             type="search"
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Search notes…"
+            placeholder="search notes…"
             aria-label="Search notes"
-            className="pl-9"
+            className="rounded-full pl-9"
           />
         </div>
         <Button asChild>
@@ -99,23 +99,23 @@ export function NotesBrowser({ initialNotes }: { initialNotes: NoteDTO[] }) {
       )}
 
       {shown.length === 0 ? (
-        <p className="py-10 text-center text-sm text-muted-foreground">
+        <p className="py-10 text-center text-sm lowercase text-muted-foreground">
           {initialNotes.length === 0
-            ? "No notes yet. Capture one from the dashboard or tap New."
-            : "No notes match."}
+            ? "no notes yet. capture one from the dashboard or tap new."
+            : "no notes match."}
         </p>
       ) : (
-        <ul className={cn("grid gap-2", searching && "opacity-70")}>
+        <ul className={cn("grid gap-2.5", searching && "opacity-70")}>
           {shown.map((note) => (
             <li key={note.id}>
               <Link
                 href={`/notes/${note.id}`}
-                className="block rounded-xl border bg-card p-4 shadow-sm transition-colors hover:bg-accent/50 active:bg-accent"
+                className="panel block p-4 transition-[border-color,transform] duration-200 hover:-translate-y-0.5 hover:border-primary/50 active:translate-y-0"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="min-w-0 flex-1">
                     {note.title ? (
-                      <div className="mb-0.5 truncate font-medium">
+                      <div className="font-display mb-1 truncate text-xl leading-snug">
                         {note.title}
                       </div>
                     ) : null}
@@ -125,8 +125,8 @@ export function NotesBrowser({ initialNotes }: { initialNotes: NoteDTO[] }) {
                       </p>
                     ) : (
                       !note.title && (
-                        <p className="text-sm italic text-muted-foreground">
-                          Empty note
+                        <p className="text-sm lowercase text-muted-foreground/70">
+                          empty note
                         </p>
                       )
                     )}
@@ -136,13 +136,9 @@ export function NotesBrowser({ initialNotes }: { initialNotes: NoteDTO[] }) {
                   )}
                 </div>
                 {note.tags.length > 0 && (
-                  <div className="mt-2 flex flex-wrap gap-1">
+                  <div className="mt-2.5 flex flex-wrap gap-1.5">
                     {note.tags.map((tag) => (
-                      <Badge
-                        key={tag}
-                        variant="secondary"
-                        className="text-muted-foreground"
-                      >
+                      <Badge key={tag} variant="secondary">
                         {tag}
                       </Badge>
                     ))}

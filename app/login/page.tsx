@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { NotebookPen } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -40,40 +39,39 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="flex flex-1 items-center justify-center px-4">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full max-w-sm space-y-6 rounded-xl border bg-card p-6 shadow-sm"
-      >
-        <div className="flex flex-col items-center gap-2 text-center">
-          <div className="flex size-12 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-            <NotebookPen className="size-6" />
-          </div>
-          <h1 className="text-xl font-semibold">Notes</h1>
-          <p className="text-sm text-muted-foreground">
-            Enter the password to continue
+    <div className="flex flex-1 items-center justify-center px-4 py-12">
+      <div className="w-full max-w-sm">
+        <div className="mb-8 text-center">
+          <p className="u-label text-muted-foreground">personal · notebook</p>
+          <h1 className="u-display mt-3 text-6xl leading-none">notes</h1>
+          <p className="mt-4 text-sm lowercase text-muted-foreground">
+            enter the password to continue
           </p>
         </div>
-        <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
-          <Input
-            id="password"
-            type="password"
-            autoFocus
-            autoComplete="current-password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {error && <p className="text-sm text-destructive">{error}</p>}
-        </div>
-        <Button
-          type="submit"
-          className="w-full"
-          disabled={!password || submitting}
-        >
-          {submitting ? "Signing in…" : "Sign in"}
-        </Button>
-      </form>
+        <form onSubmit={handleSubmit} className="panel space-y-6 p-6">
+          <div className="space-y-2.5">
+            <Label htmlFor="password">Password</Label>
+            <Input
+              id="password"
+              type="password"
+              autoFocus
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {error && (
+              <p className="text-sm lowercase text-destructive">{error}</p>
+            )}
+          </div>
+          <Button
+            type="submit"
+            className="w-full"
+            disabled={!password || submitting}
+          >
+            {submitting ? "Signing in…" : "Sign in"}
+          </Button>
+        </form>
+      </div>
     </div>
   );
 }

@@ -2,40 +2,54 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, StickyNote } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "/", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/notes", label: "Notes", icon: StickyNote },
+  { href: "/", label: "dashboard" },
+  { href: "/notes", label: "notes" },
 ];
 
 export function Nav() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 border-b bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75">
-      <nav className="mx-auto flex h-14 w-full max-w-5xl items-center gap-1 px-3">
-        {links.map(({ href, label, icon: Icon }) => {
-          const active =
-            href === "/" ? pathname === "/" : pathname.startsWith(href);
-          return (
-            <Link
-              key={href}
-              href={href}
-              className={cn(
-                "flex h-10 items-center gap-2 rounded-md px-4 text-sm font-medium transition-colors",
-                active
-                  ? "bg-accent text-accent-foreground"
-                  : "text-muted-foreground hover:bg-accent/50 hover:text-foreground"
-              )}
-            >
-              <Icon className="size-4" />
-              {label}
-            </Link>
-          );
-        })}
+    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/95">
+      <nav className="mx-auto flex h-14 w-full max-w-5xl items-center justify-between px-4">
+        <Link
+          href="/"
+          className="u-display text-2xl leading-none text-foreground"
+        >
+          notes
+        </Link>
+        <div className="flex items-center gap-1">
+          {links.map(({ href, label }) => {
+            const active =
+              href === "/" ? pathname === "/" : pathname.startsWith(href);
+            return (
+              <Link
+                key={href}
+                href={href}
+                aria-current={active ? "page" : undefined}
+                className={cn(
+                  "flex h-14 items-center gap-2 px-3 text-sm lowercase transition-colors",
+                  active
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                )}
+              >
+                <span
+                  aria-hidden
+                  className={cn(
+                    "size-1 rounded-full transition-colors",
+                    active ? "bg-primary" : "bg-transparent"
+                  )}
+                />
+                {label}
+              </Link>
+            );
+          })}
+        </div>
       </nav>
     </header>
   );

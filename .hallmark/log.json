@@ -1,0 +1,13 @@
+[
+  {
+    "date": "2026-07-05",
+    "scope": "app",
+    "macrostructure": "Workbench (app family)",
+    "theme": "lumen",
+    "drop": "night+day (system prefers-color-scheme)",
+    "theme_axes": "dark+light / classical-serif-lowercase / warm-brass (night) · cool-indigo (day)",
+    "enrichment": "none",
+    "nav": "N9 edge-aligned (app-adapted)",
+    "brief": "notes-app-2026 · moody, thought-provoking whole-app redesign; functionality unchanged"
+  }
+]

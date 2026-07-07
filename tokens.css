@@ -1,0 +1,50 @@
+/* Hallmark · genre: atmospheric · theme: Lumen · drops: Day Foundry (light) / Night Foundry (dark)
+ * design-system: design.md · designed-as-app
+ * Portable token layer — every colour, font, easing, and radius the app uses, by name.
+ */
+
+:root {
+  /* Drop 02 · Day Foundry — cool bone, violet pull; deep indigo accent (refracts) */
+  --hm-paper: oklch(0.97 0.008 265);
+  --hm-paper-2: oklch(0.99 0.004 265);
+  --hm-paper-3: oklch(0.936 0.012 265);
+  --hm-ink: oklch(0.18 0.014 265);
+  --hm-ink-2: oklch(0.44 0.02 265);
+  --hm-rule: oklch(0.875 0.014 265);
+  --hm-accent: oklch(0.46 0.24 268);
+  --hm-accent-ink: oklch(0.985 0.005 265);
+  --hm-accent-wash: oklch(0.93 0.026 268);
+  --hm-accent-wash-ink: oklch(0.36 0.2 268);
+  --hm-glow: oklch(0.58 0.22 268 / 0.28);
+  --hm-emit: oklch(0.46 0.24 268 / 0.03);
+  --hm-blueprint: oklch(0.18 0.014 265 / 0.045);
+  --hm-danger: oklch(0.5 0.19 25);
+  --hm-danger-ink: oklch(0.985 0.005 265);
+
+  --hm-radius: 0.5rem;
+
+  --hm-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --hm-dur-short: 220ms;
+}
+
+/* Drop 01 · Night Foundry — late-night studio violet-black; molten brass (emits).
+ * Auto dark theme follows the device preference (spec §6). */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --hm-paper: oklch(0.13 0.014 265);
+    --hm-paper-2: oklch(0.168 0.016 265);
+    --hm-paper-3: oklch(0.215 0.018 265);
+    --hm-ink: oklch(0.96 0.006 262);
+    --hm-ink-2: oklch(0.68 0.014 265);
+    --hm-rule: oklch(0.27 0.02 265);
+    --hm-accent: oklch(0.76 0.17 50);
+    --hm-accent-ink: oklch(0.16 0.02 50);
+    --hm-accent-wash: oklch(0.24 0.03 50);
+    --hm-accent-wash-ink: oklch(0.85 0.12 50);
+    --hm-glow: oklch(0.8 0.16 50 / 0.42);
+    --hm-emit: oklch(0.76 0.17 50 / 0.04);
+    --hm-blueprint: oklch(0.96 0.006 262 / 0.04);
+    --hm-danger: oklch(0.64 0.19 25);
+    --hm-danger-ink: oklch(0.13 0.014 265);
+  }
+}

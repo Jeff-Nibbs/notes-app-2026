@@ -1,7 +1,7 @@
 "use client";
 
 import { FormEvent, useRef, useState } from "react";
-import { CalendarIcon, CheckIcon, ListTodo, StickyNote } from "lucide-react";
+import { CalendarIcon, CheckIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -67,20 +67,22 @@ export function QuickCapture({
     <Card>
       <CardContent className="space-y-3 p-4">
         <div className="flex items-center justify-between gap-2">
-          <div className="flex rounded-lg bg-muted p-1" role="tablist">
+          <div
+            className="flex rounded-full border border-border p-0.5"
+            role="tablist"
+          >
             <button
               type="button"
               role="tab"
               aria-selected={mode === "note"}
               onClick={() => setMode("note")}
               className={cn(
-                "flex h-8 items-center gap-1.5 rounded-md px-3 text-sm font-medium transition-colors",
+                "u-label flex h-8 items-center rounded-full px-4 transition-colors",
                 mode === "note"
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground"
+                  ? "bg-secondary text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               )}
             >
-              <StickyNote className="size-4" />
               Note
             </button>
             <button
@@ -89,24 +91,23 @@ export function QuickCapture({
               aria-selected={mode === "todo"}
               onClick={() => setMode("todo")}
               className={cn(
-                "flex h-8 items-center gap-1.5 rounded-md px-3 text-sm font-medium transition-colors",
+                "u-label flex h-8 items-center rounded-full px-4 transition-colors",
                 mode === "todo"
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground"
+                  ? "bg-secondary text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               )}
             >
-              <ListTodo className="size-4" />
               Todo
             </button>
           </div>
           <span
             aria-live="polite"
             className={cn(
-              "flex items-center gap-1 text-sm font-medium text-primary transition-opacity duration-300",
+              "u-label flex items-center gap-1.5 text-primary transition-opacity duration-300",
               saved ? "opacity-100" : "opacity-0"
             )}
           >
-            <CheckIcon className="size-4" />
+            <CheckIcon className="size-3.5" />
             Saved
           </span>
         </div>
@@ -116,7 +117,7 @@ export function QuickCapture({
               value={text}
               onChange={(e) => setText(e.target.value)}
               placeholder={
-                mode === "note" ? "Jot down a note…" : "Add a todo…"
+                mode === "note" ? "jot down a note…" : "add a todo…"
               }
               aria-label={mode === "note" ? "New note" : "New todo"}
               enterKeyHint="done"
